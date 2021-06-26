@@ -2,7 +2,7 @@
   "name": "simple_login_register",
   "version": "1.0.0",
   "description": "Solution for Server Programming Lab 2-3",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"

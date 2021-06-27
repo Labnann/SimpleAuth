@@ -7,11 +7,10 @@ let app = express();
 app.listen(8888);
 
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended:true}));
 app.use(express.static('./public/AdminLTE/AdminLTE'));
 
 
-app.use('/',router,express.json());
-
+app.use('/',router);
 
 console.log("Hello World!");

@@ -5,8 +5,8 @@ function show(request,response){
 }
 
 function post(request,response){
-    console.log(response.body);
-    response.json([{a:1,b:2}]);
+    console.log(request.body);
+
 }
 
 module.exports = {show,post}

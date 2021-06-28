@@ -19,15 +19,17 @@ function query(sql){
 }
 
 
-function insert(sql){
+ async function insert(sql){
     return new Promise(((resolve, reject) => {
         db.run(sql.query, sql.parameters,(err, rows) => {
             if (err) {
                 reject(err);
+            } else {
+                console.log('Inserted');
             }
-            else console.log('Inserted');
         });
     }))
+
 }
 
 

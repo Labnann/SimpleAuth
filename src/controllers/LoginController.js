@@ -1,5 +1,6 @@
 const path = require('path');
 const database = require('../database/database');
+const bcrypt = require('bcrypt');
 
 function show(request,response){
     response.sendFile(path.resolve(__dirname,'./../public/AdminLTE/AdminLTE/pages/examples/login-v2.html'));
@@ -17,13 +18,14 @@ function login(response){
     console.log("DB Checking");
     let sql = {}
     sql.query = "select * from users where email = ? and password = ?";
-    sql.parameters = [requestData.email, requestData.password];
+    const hashedPassword = bcrypt.hashSync(requestData, 2);
+    sql.parameters = [requestData.email, hashedPassword];
     return  processLogin(makeAsyncQuery(sql),response);
-
 
 }
 
 function processLogin(queryPromise,response){
+
     queryPromise.then((rows)=>{
         console.log(requestData);
         if(rows.length==1){

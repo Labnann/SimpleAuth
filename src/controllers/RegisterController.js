@@ -10,9 +10,8 @@ function post(request,response){
     console.log(request.body);
     let person  = request.body;
     if(person.confirm == person.password) {
-        bcrypt.hash(person.password, 2, function(err, hash) {
-            register([person.name,person.email,person.gender, hash]);
-        });
+            const hashedPassword = bcrypt.hashSync(person.password,2);
+            register([person.name,person.email,person.gender, hashedPassword]);
     }
 
 }

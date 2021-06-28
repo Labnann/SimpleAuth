@@ -6,10 +6,10 @@ function show(request,response){
     response.sendFile(path.resolve(__dirname,'./../public/AdminLTE/AdminLTE/pages/examples/login-v2.html'));
 }
 
-let requestData;
+let loginCredentials;
 
 function post(request,response){
-    requestData = request.body;
+    loginCredentials = request.body;
     return  login(response);
 
 }
@@ -17,9 +17,8 @@ function post(request,response){
 function login(response){
     console.log("DB Checking");
     let sql = {}
-    sql.query = "select * from users where email = ? and password = ?";
-    const hashedPassword = bcrypt.hashSync(requestData, 2);
-    sql.parameters = [requestData.email, hashedPassword];
+    sql.query = "select * from users where email = ?";
+    sql.parameters = [loginCredentials.email];
     return  processLogin(makeAsyncQuery(sql),response);
 
 }
@@ -27,12 +26,11 @@ function login(response){
 function processLogin(queryPromise,response){
 
     queryPromise.then((rows)=>{
-        console.log(requestData);
-        if(rows.length==1){
+        console.log(loginCredentials);
+        if(bcrypt.compareSync(loginCredentials.password,rows[0].password))
            return response.sendFile(path.resolve(__dirname,'./../public/AdminLTE/AdminLTE/index.html'));
-        }
+        else return response.redirect('/login');
     });
-
 }
 
 

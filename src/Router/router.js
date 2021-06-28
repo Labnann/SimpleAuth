@@ -6,6 +6,8 @@ const controllers = {
 }
 
 router.get('/login',controllers.loginController.show);
+router.get('/',controllers.loginController.show);
+
 router.get('/register',controllers.registerController.show);
 
 router.post('/login',controllers.loginController.post);

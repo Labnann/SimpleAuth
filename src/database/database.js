@@ -21,10 +21,11 @@ function query(sql){
 
  async function insert(sql){
     return new Promise(((resolve, reject) => {
-        db.run(sql.query, sql.parameters,(err, rows) => {
+        db.run(sql.query, sql.parameters,(err) => {
             if (err) {
                 reject(err);
             } else {
+                resolve(true);
                 console.log('Inserted');
             }
         });

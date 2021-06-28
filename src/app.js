@@ -8,9 +8,10 @@ app.listen(8888);
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use('/',router);
 app.use(express.static('./public/AdminLTE/AdminLTE'));
 
 
-app.use('/',router);
+
 
 console.log("Hello World!");

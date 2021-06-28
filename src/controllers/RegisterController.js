@@ -22,9 +22,16 @@ register = (data,response) =>{
     sql.query = "Insert into users values(?,?,?,?)";
     sql.parameters = data;
 
-        database.insert(sql).catch(()=>{
+    let databaseStatusPromise = database.insert(sql);
+
+    databaseStatusPromise.then((result)=>{
+        console.log("Why are we here and where are we going?" + result);
+        response.redirect("/login")
+    }).catch((err)=>{
+        console.log("test");
+        if(err)
             response.redirect("/register");
-        }).then(  ()=>{response.redirect("/login")})
+    });
 }
 
 

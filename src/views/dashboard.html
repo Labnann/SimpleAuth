@@ -188,7 +188,7 @@
                     <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Khalid Masum</a>
+                    <a href="#" class="d-block" name="username">Username</a>
                 </div>
             </div>
 
@@ -996,8 +996,8 @@
                                     <!-- Message. Default to the left -->
                                     <div class="direct-chat-msg">
                                         <div class="direct-chat-infos clearfix">
-                                            <span class="direct-chat-name float-left">Khalid Masum</span>
-                                            <span class="direct-chat-timestamp float-right">SorryAlexander Pierce</span>
+                                            <span class="direct-chat-name float-left" name="username">Username</span>
+                                            <span class="direct-chat-timestamp float-right">23 Jan 4:22 pm</span>
                                         </div>
                                         <!-- /.direct-chat-infos -->
                                         <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
@@ -1028,7 +1028,7 @@
                                     <!-- Message. Default to the left -->
                                     <div class="direct-chat-msg">
                                         <div class="direct-chat-infos clearfix">
-                                            <span class="direct-chat-name float-left">Alexander Pierce</span>
+                                            <span class="direct-chat-name float-left" name="username">Username</span>
                                             <span class="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
                                         </div>
                                         <!-- /.direct-chat-infos -->
@@ -1501,5 +1501,16 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
+<script>
+
+    /*$$RESPONSE_DATA$$*/
+
+        document.getElementsByName("username").forEach((element)=>{
+            element.innerHTML = username;
+        })
+
+
+
+</script>
 </body>
 </html>

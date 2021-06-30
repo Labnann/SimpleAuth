@@ -27,8 +27,9 @@ function processLogin(queryPromise,response){
 
     queryPromise.then((rows)=>{
         console.log(loginCredentials);
-        if(bcrypt.compareSync(loginCredentials.password,rows[0].password))
-           return response.sendFile(path.resolve(__dirname,'./../public/AdminLTE/AdminLTE/index.html'));
+        if(rows[0]!=null)
+        {if(bcrypt.compareSync(loginCredentials.password,rows[0].password))
+           return response.sendFile(path.resolve(__dirname,'./../views/dashboard.html'));}
         else return response.redirect('/login');
     });
 }

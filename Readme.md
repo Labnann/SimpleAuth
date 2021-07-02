@@ -10,7 +10,7 @@ You need to clone this repository with recursive submodule call <br>
 
 ## Install node packages
 cd to the project directory<br>
-`cd src`
+`cd SimpleAuth/src`
 
 Install the packages
 
